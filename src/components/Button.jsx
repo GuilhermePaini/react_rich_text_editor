@@ -1,5 +1,6 @@
 import React from 'react'
 
 export default props =>
-    <a href={props.href}></a>
-    
+    <a target='_blank' href='google.com'>
+        <button>{props.name}</button>
+    </a>
