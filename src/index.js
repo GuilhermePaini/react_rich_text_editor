@@ -1,15 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Primeiro from './components/Primeiro'
-import Button from './components/Button'
+import App from './App'
 
 let root = document.getElementById('root');
 
 ReactDOM.render(
-    <div>
-        <Primeiro />
-        <Button name='carol'/>
-    </div>, 
+    <App />, 
     root
 );
