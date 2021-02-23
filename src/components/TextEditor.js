@@ -1,14 +1,9 @@
-// Import React dependencies.
 import React, { useEffect, useMemo, useState } from 'react';
-// Import the Slate editor factory.
 import { createEditor } from 'slate';
-
-// Import the Slate components and React plugin.
 import { Slate, Editable, withReact } from 'slate-react';
 
-// Define our app...
 const App = () => {
-    // Create a Slate editor object that won't change across renders.
+
     const editor = useMemo(() => withReact(createEditor()), []);
     const [value, setValue] = useState([
         {
@@ -21,9 +16,24 @@ const App = () => {
 
     return (
         <Slate editor={editor} value={value} onChange={newValue => setValue(newValue)}>
-            <Editable />
+            <Editable 
+                onKeyDown={event => {
+                   
+                }}
+            />
         </Slate>
       )
 }
 
+const CodeElement = props => {
+    return (
+      <pre {...props.attributes}>
+        <code>{props.children}</code>
+      </pre>
+    )
+}
+
+const DefaultElement = props => {
+    return <p {...props.attributes}>{props.children}</p>
+}
 export default App;
