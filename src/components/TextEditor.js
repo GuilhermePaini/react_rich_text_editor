@@ -1,23 +1,29 @@
-import React, { Component } from "react";
-import { Editor } from 'slate';
-import { Value } from 'slate-react';
+// Import React dependencies.
+import React, { useEffect, useMemo, useState } from 'react';
+// Import the Slate editor factory.
+import { createEditor } from 'slate';
 
-const initalValue = Value.json({
+// Import the Slate components and React plugin.
+import { Slate, Editable, withReact } from 'slate-react';
 
-});
-export default class TextEditor extends Component{
-    state = {
-        value: ''
-    }
+// Define our app...
+const App = () => {
+    // Create a Slate editor object that won't change across renders.
+    const editor = useMemo(() => withReact(createEditor()), []);
+    const [value, setValue] = useState([
+        {
+          type: 'paragraph',
+          children: [
+              { text: 'A line of text in a paragraph.' }
+            ],
+        },
+    ])
 
-    onchange = ({ value }) => {
-        this.setState({ value });
-    }
-
-    render(){
-        return(
-            <Editor value={this.state.value} onChange={this.onChange}/>
-        )
-    }
+    return (
+        <Slate editor={editor} value={value} onChange={newValue => setValue(newValue)}>
+            <Editable />
+        </Slate>
+      )
 }
 
+export default App;
