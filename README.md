@@ -1,6 +1,6 @@
 ## Rich Text Editor
 
-![Image of Project](https://github.com/GuilhermePaini/react_rich_text_editor/blob/master/public/screenshots/thumbnail.jpeg)
+![Image of Project](https://github.com/GuilhermePaini/react_rich_text_editor/blob/master/public/screenshots/thumbnail.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
