@@ -140,6 +140,7 @@ const App = () => {
         renderElement={renderElement}
         onKeyDown={onKeyDown}
         renderLeaf={renderLeaf}
+        className='editor'
       />
     </Slate>
   );
