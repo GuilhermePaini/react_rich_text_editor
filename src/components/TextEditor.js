@@ -1,8 +1,11 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { createEditor, Text, Editor, Transforms } from 'slate';
+import { createEditor } from 'slate';
+import { Text, Editor, Transforms } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 
-import {CodeElement, DefaultElement, BoldElement, TitleElement} from './Elements/';
+import {CodeElement, DefaultElement, BoldElement, TitleElement, ItalicElement} from './Elements/';
+
+import Toolbar from './Elements/Toolbar/';
 
 const CustomEditor = {
   isBoldMarkActive(editor) {
@@ -11,6 +14,32 @@ const CustomEditor = {
     })
 
     return !!match
+  },
+
+  toggleBoldMark(editor) {
+    const isActive = CustomEditor.isBoldMarkActive(editor)
+    Transforms.setNodes(
+      editor,
+      { bold: isActive ? null : true },
+      { match: n => Text.isText(n), split: true }
+    )
+  },
+
+  isItalicMarkActive(editor) {
+    const [match] = Editor.nodes(editor, {
+      match: n => n.italic === true,
+    })
+
+    return !!match
+  },
+
+  toggleItalicMark(editor) {
+    const isActive = CustomEditor.isItalicMarkActive(editor)
+    Transforms.setNodes(
+      editor,
+      { italic: isActive ? null : true },
+      { match: n => Text.isText(n), split: true }
+    )
   },
 
   isTitleMarkActive(editor) {
@@ -27,15 +56,6 @@ const CustomEditor = {
     })
 
     return !!match
-  },
-
-  toggleBoldMark(editor) {
-    const isActive = CustomEditor.isBoldMarkActive(editor)
-    Transforms.setNodes(
-      editor,
-      { bold: isActive ? null : true },
-      { match: n => Text.isText(n), split: true }
-    )
   },
 
   toggleTitleBlock(editor) {
@@ -77,6 +97,8 @@ const App = () => {
         return <BoldElement {...props} />
       case 'title':
         return <TitleElement {...props} />
+      case 'italic':
+        return <ItalicElement {...props} />
       default:
         return <DefaultElement {...props} />
     }
@@ -86,7 +108,7 @@ const App = () => {
     return <Leaf {...props} />
   }, [])
 
-  const onKeyDown = (event) => {
+  /*const onKeyDown = (event) => {
     if(!event.ctrlKey){ return }
 
     switch (event.key) {
@@ -101,8 +123,28 @@ const App = () => {
         CustomEditor.toggleBoldMark(editor)
         break
       }
+
+      case 'i': {
+        event.preventDefault()
+        CustomEditor.toggleItalicMark(editor)
+        break
+      }
     }
-  };
+  };*/
+
+  const Leaf = props => {
+    return (
+      <span 
+        {...props.attributes} 
+        style={{ 
+          fontWeight: props.leaf.bold ? 'bold' : 'normal', 
+          fontStyle: props.leaf.italic ? 'italic' : 'normal'
+        }}
+      >
+        {props.children}
+      </span>
+    )
+  }
 
   return (
     <Slate 
@@ -110,51 +152,15 @@ const App = () => {
       value={value} 
       onChange={newValue => setValue(newValue)}
     >
-      <div>
-        <button
-          onMouseDown={event => {
-            event.preventDefault()
-            CustomEditor.toggleBoldMark(editor)
-          }}
-        >
-          Bold
-        </button>
-        <button
-          onMouseDown={event => {
-            event.preventDefault()
-            CustomEditor.toggleCodeBlock(editor)
-          }}
-        >
-          Code Block
-        </button>
-        <button
-          onMouseDown={event => {
-            event.preventDefault()
-            CustomEditor.toggleTitleBlock(editor)
-          }}
-        >
-          Title
-        </button>
-      </div>
+      <Toolbar editor={editor} custom={CustomEditor}/>
       <Editable
         renderElement={renderElement}
-        onKeyDown={onKeyDown}
+        //onKeyDown={onKeyDown}
         renderLeaf={renderLeaf}
         className='editor'
       />
     </Slate>
   );
-}
-
-const Leaf = props => {
-  return (
-    <span 
-      {...props.attributes} 
-      style={{ fontWeight: props.leaf.bold ? 'bold' : 'normal' }}
-    >
-      {props.children}
-    </span>
-  )
 }
 
 export default App;
