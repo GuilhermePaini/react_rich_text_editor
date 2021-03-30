@@ -18,9 +18,10 @@ body{
     position: relative;
     margin: 20px auto;
     max-width: 42em;
+    box-shadow: 0 1px 2px 0 #646464, 0 1px 5px 0 #646464;
 }
 
 .editor{
     border-top: 1px solid #a1a1a1;
-    padding: 10px;
+    padding: 5px;
 }
