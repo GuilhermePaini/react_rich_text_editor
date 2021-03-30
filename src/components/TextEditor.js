@@ -1,81 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { createEditor } from 'slate';
-import { Text, Editor, Transforms } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 
 import {CodeElement, DefaultElement, BoldElement, TitleElement, ItalicElement} from './Elements/';
 
-import Toolbar from './Elements/Toolbar/';
-
-const CustomEditor = {
-  isBoldMarkActive(editor) {
-    const [match] = Editor.nodes(editor, {
-      match: n => n.bold === true,
-    })
-
-    return !!match
-  },
-
-  toggleBoldMark(editor) {
-    const isActive = CustomEditor.isBoldMarkActive(editor)
-    Transforms.setNodes(
-      editor,
-      { bold: isActive ? null : true },
-      { match: n => Text.isText(n), split: true }
-    )
-  },
-
-  isItalicMarkActive(editor) {
-    const [match] = Editor.nodes(editor, {
-      match: n => n.italic === true,
-    })
-
-    return !!match
-  },
-
-  toggleItalicMark(editor) {
-    const isActive = CustomEditor.isItalicMarkActive(editor)
-    Transforms.setNodes(
-      editor,
-      { italic: isActive ? null : true },
-      { match: n => Text.isText(n), split: true }
-    )
-  },
-
-  isTitleMarkActive(editor) {
-    const [match] = Editor.nodes(editor, {
-      match: n => n.type === 'title',
-    })
-
-    return !!match
-  },
-
-  isCodeBlockActive(editor) {
-    const [match] = Editor.nodes(editor, {
-      match: n => n.type === 'code',
-    })
-
-    return !!match
-  },
-
-  toggleTitleBlock(editor) {
-    const isActive = CustomEditor.isTitleMarkActive(editor)
-    Transforms.setNodes(
-      editor,
-      { type: isActive ? null : 'title' },
-      { match: n => Editor.isBlock(editor, n) }
-    )
-  },
-
-  toggleCodeBlock(editor) {
-    const isActive = CustomEditor.isCodeBlockActive(editor)
-    Transforms.setNodes(
-      editor,
-      { type: isActive ? null : 'code' },
-      { match: n => Editor.isBlock(editor, n) }
-    )
-  },
-}
+import Toolbar from './Toolbar';
 
 const App = () => {
 
@@ -108,30 +37,6 @@ const App = () => {
     return <Leaf {...props} />
   }, [])
 
-  /*const onKeyDown = (event) => {
-    if(!event.ctrlKey){ return }
-
-    switch (event.key) {
-      case 'k': {
-        event.preventDefault()
-        CustomEditor.toggleCodeBlock(editor)
-        break
-      }
-
-      case 'b': {
-        event.preventDefault()
-        CustomEditor.toggleBoldMark(editor)
-        break
-      }
-
-      case 'i': {
-        event.preventDefault()
-        CustomEditor.toggleItalicMark(editor)
-        break
-      }
-    }
-  };*/
-
   const Leaf = props => {
     return (
       <span 
@@ -152,7 +57,7 @@ const App = () => {
       value={value} 
       onChange={newValue => setValue(newValue)}
     >
-      <Toolbar editor={editor} custom={CustomEditor}/>
+      <Toolbar editor={editor}/>
       <Editable
         renderElement={renderElement}
         //onKeyDown={onKeyDown}

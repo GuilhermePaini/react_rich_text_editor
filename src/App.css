@@ -1,6 +1,26 @@
+body{
+    background-color: #d8d8d8;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.toolbar{
+    padding: 10px;
+}
+.toolbar span{
+    cursor: pointer;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+.App{
+    background-color: #fff;
+    position: relative;
+    margin: 20px auto;
+    max-width: 42em;
+}
+
 .editor{
-    border: 2px solid;
-    border-radius: 5px;
-    width: 50%;
+    border-top: 1px solid #a1a1a1;
     padding: 10px;
 }
