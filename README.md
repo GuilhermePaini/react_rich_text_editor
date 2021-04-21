@@ -1,4 +1,4 @@
-## Rich Text Editor
+<h1 align='center'> Rich Text Editor </h1>
 
 ![Image of Project](https://github.com/GuilhermePaini/react_rich_text_editor/blob/master/public/screenshots/thumbnail.png)
 
