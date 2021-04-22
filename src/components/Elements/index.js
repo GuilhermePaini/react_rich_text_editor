@@ -1,7 +1,8 @@
-import CodeElement from './CodeElement'
-import DefaultElement from './DefaultElement'
-import BoldElement from './BoldElement'
-import TitleElement from './TitleElement'
-import ItalicElement from './ItalicElement'
+import Code from './CodeElement'
+import Default from './DefaultElement'
+import Bold from './BoldElement'
+import Title from './TitleElement'
+import Italic from './ItalicElement'
+import Leaf from './LeafElement'
 
-export {CodeElement, DefaultElement, BoldElement, TitleElement, ItalicElement};
+export {Code, Default, Bold, Title, Italic, Leaf};

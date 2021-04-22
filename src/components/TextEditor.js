@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { createEditor } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 
-import {CodeElement, DefaultElement, BoldElement, TitleElement, ItalicElement} from './Elements/';
+import {Code, Default, Bold, Title, Italic, Leaf} from './Elements/';
 
 import Toolbar from './Toolbar';
 
@@ -21,35 +21,21 @@ const App = () => {
   const renderElement = useCallback(props => {
     switch (props.element.type) {
       case 'code':
-        return <CodeElement {...props} />
+        return <Code {...props} />
       case 'bold':
-        return <BoldElement {...props} />
+        return <Bold {...props} />
       case 'title':
-        return <TitleElement {...props} />
+        return <Title {...props} />
       case 'italic':
-        return <ItalicElement {...props} />
+        return <Italic {...props} />
       default:
-        return <DefaultElement {...props} />
+        return <Default {...props} />
     }
   }, []);
 
   const renderLeaf = useCallback(props => {
     return <Leaf {...props} />
   }, [])
-
-  const Leaf = props => {
-    return (
-      <span 
-        {...props.attributes} 
-        style={{ 
-          fontWeight: props.leaf.bold ? 'bold' : 'normal', 
-          fontStyle: props.leaf.italic ? 'italic' : 'normal'
-        }}
-      >
-        {props.children}
-      </span>
-    )
-  }
 
   return (
     <Slate 
