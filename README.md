@@ -1,5 +1,12 @@
 <h1 align='center'> Rich Text Editor </h1>
 
+<p align='center'>
+  <img src="https://img.shields.io/badge/react-%5E17.0.2-%2361dbfb?logo=react" alt="react">
+  <img src="https://img.shields.io/badge/slate-%5E0.62.0-lightgrey" alt="slate">
+  <img src="https://img.shields.io/badge/-Open%20Source-%23006e54?logo=game-jolt" alt="open-source">
+  <img src="https://img.shields.io/badge/styled--components-%5E5.2.1-%23df7296?logo=styled-components" alt="styled-components">
+</p>
+
 ![Image of Project](https://github.com/GuilhermePaini/react_rich_text_editor/blob/master/public/screenshots/thumbnail.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
