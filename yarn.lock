@@ -9770,10 +9770,10 @@ slate-react@^0.62.0:
     scroll-into-view-if-needed "^2.2.20"
     tiny-invariant "1.0.6"
 
-slate@^0.62.0:
-  version "0.62.0"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.62.0.tgz#7269502f46e06afd1bd61e9f7b6b4240db1c533b"
-  integrity sha512-eV00ONY/wc0Xy8SragC04Iv5w2uZn2KE6eNACon1zojrwOs4RL+BUV8hZo2PKj2SBoxMJ4s/NGtqgTaUjBIRDw==
+slate@^0.62.1:
+  version "0.62.1"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.62.1.tgz#d17b174e9967f920dda23f77982b30582d9c68a7"
+  integrity sha512-zRY23L945B2gyxo7WvsZ4atbyBTTV4Ce1Ius3ZFyjUr13l3MjxSKHILS3UPqN17MnD/k5Zj87s1n7mdZSbAi0w==
   dependencies:
     "@types/esrever" "^0.2.0"
     esrever "^0.2.0"
