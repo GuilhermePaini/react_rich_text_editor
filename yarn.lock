@@ -9756,10 +9756,10 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-slate-react@^0.62.0:
-  version "0.62.0"
-  resolved "https://registry.yarnpkg.com/slate-react/-/slate-react-0.62.0.tgz#023a2b797bd417adbb56b0a1e961768404f05be5"
-  integrity sha512-La3fROGdqOlD9s4p5+ObvAeuAj0LDYrXhYcGrPxHbz60fhXvGePtYXvhoEXARqJY9cF2Ql26kJ5f7+nqUzY4BA==
+slate-react@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/slate-react/-/slate-react-0.65.0.tgz#58e19f42f1bda726626c5b75a677bb783fc13853"
+  integrity sha512-eEDv3OavlSu+dwWtwSuQ/ourKhazgz4NU3OOp0xjTxxcYECV9swC3Eps633l5CktiU16+XIpNgxP9f9yupgIpg==
   dependencies:
     "@types/is-hotkey" "^0.1.1"
     "@types/lodash" "^4.14.149"
